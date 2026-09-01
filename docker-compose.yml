@@ -1,0 +1,33 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: practice-backend
+    ports:
+      - "2000:2000"
+    environment:
+      - PORT=2000
+      - NODE_ENV=production
+    restart: unless-stopped
+    networks:
+      - practice-network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=http://localhost:2000
+    container_name: practice-frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - practice-network
+
+networks:
+  practice-network:
+    driver: bridge

@@ -7,6 +7,10 @@
     "dev": "vite",
     "backend:dev": "npm --prefix backend run start:dev",
     "backend:build": "npm --prefix backend run build",
+    "docker:up": "docker compose up --build",
+    "docker:up:d": "docker compose up --build -d",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"

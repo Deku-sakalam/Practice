@@ -219,10 +219,12 @@ function App() {
             <use href="/icons.svg#social-icon"></use>
           </svg>
           <h2>Development Commands</h2>
-          <p>Commands to run locally</p>
+          <p>Commands to run locally or in Docker</p>
           <ul className="commands-list">
             <li><code>npm run dev</code> (Frontend on :5173)</li>
             <li><code>npm run backend:dev</code> (Backend on :2000)</li>
+            <li><code>npm run docker:up</code> (Run Fullstack in Docker 🐳)</li>
+            <li><code>npm run docker:down</code> (Stop Docker Containers)</li>
           </ul>
         </div>
       </section>
