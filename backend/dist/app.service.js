@@ -7,7 +7,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { Injectable } from '@nestjs/common';
 let AppService = class AppService {
     getHello() {
-        return 'Hello World!';
+        return {
+            message: 'Hello from NestJS Backend!',
+            timestamp: new Date().toISOString(),
+        };
+    }
+    getStatus() {
+        return {
+            status: 'online',
+            port: process.env.PORT ?? 2000,
+            message: 'Backend is running and successfully connected to frontend!',
+            timestamp: new Date().toISOString(),
+            environment: process.env.NODE_ENV ?? 'development',
+        };
+    }
+    handleMessage(data) {
+        const text = data?.message?.trim() || 'No message provided';
+        return {
+            received: true,
+            echo: `NestJS received: "${text}"`,
+            timestamp: new Date().toISOString(),
+        };
     }
 };
 AppService = __decorate([

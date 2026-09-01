@@ -7,7 +7,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Controller, Get } from '@nestjs/common';
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service.js';
 let AppController = class AppController {
     appService;
@@ -17,13 +20,32 @@ let AppController = class AppController {
     getHello() {
         return this.appService.getHello();
     }
+    getStatus() {
+        return this.appService.getStatus();
+    }
+    sendMessage(body) {
+        return this.appService.handleMessage(body);
+    }
 };
 __decorate([
     Get(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", String)
+    __metadata("design:returntype", void 0)
 ], AppController.prototype, "getHello", null);
+__decorate([
+    Get('api/status'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "getStatus", null);
+__decorate([
+    Post('api/message'),
+    __param(0, Body()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "sendMessage", null);
 AppController = __decorate([
     Controller(),
     __metadata("design:paramtypes", [AppService])
